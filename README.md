@@ -64,16 +64,11 @@ echo COHERE_API_KEY=SUA_CHAVE_API_AQUI > .env
 docker build -t ask-doc-bot .
 ```
 
-4. Rode o container montando a pasta de arquivos (usando caminho completo do host):
+4. Rode o container usando o PowerShell:
 
 ```bash
-docker run -it --rm --name ask-doc-bot -v %cd%\files:/app/files ask-doc-bot
+docker run -it --rm --name ask-doc-bot -v "files:/app/files" ask-doc-bot
 ```
-
-> **Nota:** Se você estiver usando o PowerShell, use `${PWD}` em vez de `%cd%`:
-> ```bash
-> docker run -it --rm --name ask-doc-bot -v ${PWD}\files:/app/files ask-doc-bot
-> ```
 
 ## Estrutura do Projeto
 
@@ -114,11 +109,11 @@ Métrica de qualidade da resposta (similaridade entre pergunta e contexto): 0.92
 Aqui estão algumas perguntas sugeridas que você pode fazer após o processamento de um arquivo de exemplo como **`Cuidado_felino.pdf`**:
 
 1. **Qual a idade ideal para adotar um gato?**
-2. **Cite itens essenciais para o gato.**
+2. **Me diga, em três palavras, os itens essenciais para o gato**
 3. **A partir de quantos meses é recomendada a castração?**
 4. **Quantos tópicos tem no texto?**
 5. **Quando deve ser aplicada a vacina antirrábica?**
-6. **Cite brincadeiras que os gatos costumam gostar.**
+6. **Cite duas brincadeiras que os gatos costumam gostar**
 
 ## Observações
 - A métrica de qualidade é baseada na similaridade do cosseno entre os embeddings dos chunks e da pergunta.
